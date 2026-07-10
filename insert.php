@@ -76,7 +76,7 @@ if(mysqli_query($con,$sql)){
 
     <div>
         <h1><?php 
-        if(mysqli_query($con,$sql)) {
+        if($saved) {
         echo "Data saved!";
     }?></h1>
     

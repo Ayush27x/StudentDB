@@ -7,6 +7,7 @@
 $message = "";
 $messageType = "";
 
+        //isset() : check variable is set or not
 if (isset($_GET['error'])) {
 
     if ($_GET['error'] == "exists") {
