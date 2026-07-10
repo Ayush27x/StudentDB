@@ -4,15 +4,26 @@ include 'connect.php';
 
 $name = $_POST['name'];
 $fathers_name = $_POST['fathers_name'];
+$mother_name = $_POST['mother_name'];
+$gender = $_POST['gender'];
+$dob = $_POST['dob'];
 $roll_number = $_POST['roll_number'];
 $contact = $_POST['contact'];
 $email = $_POST['email'];
+$course = $_POST['course'];
+$branch = $_POST['branch'];
+$semester = $_POST['semester'];
+$address = $_POST['address'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$pincode = $_POST['pincode'];
+$photo = $_FILES['photo']['name'];
+
 
 $sql = "INSERT INTO studentdb  
-        (name,fathers_name,roll_number,contact,email)
+        (name,fathers_name,roll_number,contact,email,dob,gender,course,branch,semester,address,city,state,pincode,photo)
         VALUES
-        ('$name','$fathers_name','$roll_number','$contact','$email')";
-
+        ('$name','$fathers_name','$roll_number','$contact','$email','$dob','$gender','$course','$branch','$semester','$address','$city','$state','$pincode','$photo')";
 
 ?>
 
