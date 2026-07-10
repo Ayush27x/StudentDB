@@ -1,0 +1,110 @@
+/* ===================================
+   Universal Selector
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ===================================
+   Body
+=================================== */
+
+body{
+    background:#f2f5f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:30px;
+}
+
+/* ===================================
+   Main Card
+=================================== */
+
+div{
+    width:700px;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0px 8px 20px rgba(0,0,0,.2);
+}
+
+/* ===================================
+   Heading
+=================================== */
+
+h1{
+    text-align:center;
+    color:green;
+    margin-bottom:20px;
+}
+
+/* ===================================
+   Student Image
+=================================== */
+
+img{
+    display:block;
+    margin:20px auto;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid royalblue;
+}
+
+/* ===================================
+   Student Details
+=================================== */
+
+p{
+    font-size:17px;
+    margin:12px 0;
+    padding:10px;
+    background:#f8f9fa;
+    border-left:5px solid royalblue;
+    border-radius:5px;
+}
+
+/* ===================================
+   Strong Tag
+=================================== */
+
+strong{
+    color:#0d47a1;
+}
+
+/* ===================================
+   Hover Effect
+=================================== */
+
+p:hover{
+    background:#e8f0fe;
+    transition:.3s;
+}
+
+/* ===================================
+   Responsive
+=================================== */
+
+@media(max-width:768px){
+
+    div{
+        width:100%;
+    }
+
+    img{
+        width:140px;
+        height:140px;
+    }
+
+    p{
+        font-size:15px;
+    }
+
+}
