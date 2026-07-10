@@ -17,16 +17,19 @@ $address = $_POST['address'];
 $city = $_POST['city'];
 $state = $_POST['state'];
 $pincode = $_POST['pincode'];
+
+
 $photo = $_FILES['photo']['name'];
+$temp = $_FILES['photo']['tmp_name'];
+(move_uploaded_file($temp, "uploads/".$photo));
 
 
 $sql = "INSERT INTO studentdb  
-        (name,fathers_name,roll_number,contact,email,dob,gender,course,branch,semester,address,city,state,pincode,photo)
+        (name,fathers_name,mother_name,roll_number,contact,email,dob,gender,course,branch,semester,address,city,state,pincode,photo)
         VALUES
-        ('$name','$fathers_name','$roll_number','$contact','$email','$dob','$gender','$course','$branch','$semester','$address','$city','$state','$pincode','$photo')";
+        ('$name','$fathers_name','$mother_name','$roll_number','$contact','$email','$dob','$gender','$course','$branch','$semester','$address','$city','$state','$pincode','$photo')";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,13 +45,29 @@ $sql = "INSERT INTO studentdb
         if(mysqli_query($con,$sql)) {
         echo "Data saved!";
     }?></h1>
+    
     <br>
+    
+    <p><strong>Student Photo:</strong></p>
+
+    <img src="uploads/<?php echo $photo; ?>" width="150" height="150">
+    
+    
     <p>Name = <?php echo $name; ?></p>
     <p>Father's Name = <?php echo $fathers_name; ?></p>
-    <p>Roll Number = <?php echo $roll_number; ?></p>
+    <p>Mother's Name = <?php echo $mother_name; ?></p>
+    <p>Gender = <?php echo $gender; ?></p>
+    <p>Date of Birth = <?php echo $dob; ?></p>
+    <p>Roll No. = <?php echo $roll_number; ?></p>
     <p>Contact = <?php echo $contact; ?></p>
     <p>Email = <?php echo $email; ?></p>
-
+    <p>Course = <?php echo $course; ?></p>
+    <p>Branch = <?php echo $branch; ?></p>
+    <p>Semester = <?php echo $semester; ?></p>
+    <p>Address = <?php echo $address; ?></p>
+    <p>City = <?php echo $city; ?></p>
+    <p>State = <?php echo $state; ?></p>
+    <p>PIN Code = <?php echo $pincode; ?></p>
     </div>
 
 </body>

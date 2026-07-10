@@ -1,68 +1,215 @@
-/* *{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/* ==========================
+   Body Styling
+========================== */
 body{
-    height: 100vh;
+    background: #f2f5f9;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    min-height: 100vh;
+    padding: 20px;
 }
 
-form{
-    width: 400px;
+
+/* ==========================
+   Main Container
+========================== */
+
+.container{
+    width: 900px;
     background: #fff;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
 }
+
+
+/* ==========================
+   Form Heading
+========================== */
+
+.container h2{
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+
+/* ==========================
+   Row
+========================== */
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+/* ==========================
+   Input Box
+========================== */
+.input-box{
+    width: 48%;
+    margin-bottom: 18px;
+}
+
+
+/* ==========================
+   Full Width Input
+   Address & Photo 
+========================== */
+
+.input-box.full{
+    width: 100%;
+}
+
+
+/* ==========================
+   Label
+========================== */
+
+label{
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+}
+
+
+/* ==========================
+   Input
+========================== */
 
 input{
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 15px;
     outline: none;
-    font-size: 16px;
-    transition: 0.3s;
 }
 
-input:focus{
-    border-color: #4facfe;
-    box-shadow: 0 0 5px rgba(79,172,254,0.5);
+
+/* ==========================
+   Select
+========================== */
+
+select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
 }
+
+
+/* ==========================
+   Textarea
+========================== */
+
+textarea{
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+
+/* ==========================
+   Focus Effect
+========================== */
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color: royalblue;
+    box-shadow: 0px 0px 5px rgba(65,105,225,.4);
+
+}
+
+
+/* ==========================
+   Radio Buttons
+========================== */
+
+input[type="radio"]{
+
+    width: auto;
+    margin-right: 5px;
+    margin-left: 10px;
+
+}
+
+
+/* ==========================
+   File Upload
+========================== */
+
+input[type="file"]{
+
+    border: none;
+    padding: 8px;
+
+}
+
+
+/* ==========================
+   Submit Button
+========================== */
 
 button{
+
     width: 100%;
     padding: 12px;
-    background: #4facfe;
+    background: royalblue;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 17px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
+
 }
+
+
+/* ==========================
+   Button Hover
+========================== */
 
 button:hover{
-    background: #007bff;
+
+    background: #0d47a1;
+
 }
 
-div{
-    background-color:#fff;
-    padding: 20px;
-    border-radius: 10px;
-}
 
-h1{
-    color:rgb(57, 207, 57);
-}
+/* ==========================
+   Responsive Design
+========================== */
 
-p{
-    padding: 10px;
-} */
+@media(max-width:768px){
+
+    .container{
+
+        width:100%;
+
+    }
+
+    .input-box{
+
+        width:100%;
+
+    }
+
+}
