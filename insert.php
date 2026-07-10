@@ -24,10 +24,44 @@ $temp = $_FILES['photo']['tmp_name'];
 (move_uploaded_file($temp, "uploads/".$photo));
 
 
+
+// ==============================
+// Check Duplicate Roll Number
+// ==============================
+
+$check = "SELECT * FROM studentdb WHERE roll_number='$roll_number'";
+
+$result = mysqli_query($con,$check);
+
+if(mysqli_num_rows($result) > 0){
+
+    header("Location:index.php?error=exists");
+
+    exit();
+
+}
+
+
 $sql = "INSERT INTO studentdb  
         (name,fathers_name,mother_name,roll_number,contact,email,dob,gender,course,branch,semester,address,city,state,pincode,photo)
         VALUES
         ('$name','$fathers_name','$mother_name','$roll_number','$contact','$email','$dob','$gender','$course','$branch','$semester','$address','$city','$state','$pincode','$photo')";
+
+
+// ==============================
+// Insert Student Data
+// ==============================
+
+if(mysqli_query($con,$sql)){
+
+    $saved = true;
+
+}else{
+
+    die(mysqli_error($con));
+
+}
+
 
 ?>
 <!DOCTYPE html>
