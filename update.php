@@ -8,10 +8,12 @@ include 'connect.php';
 
 
 // ======================================
-// Retrive data from form
+// Retrieve Form Data
 // ======================================
 
 $id = $_POST['id'];
+
+$old_photo = $_POST['old_photo'];
 
 $name = $_POST['name'];
 $fathers_name = $_POST['fathers_name'];
@@ -30,54 +32,75 @@ $pincode = $_POST['pincode'];
 
 
 // ======================================
-// UPDATE Query
+// Photo Update
+// ======================================
+
+if($_FILES['photo']['name'] != ""){
+
+    // New Photo
+    $photo = $_FILES['photo']['name'];
+
+    $temp = $_FILES['photo']['tmp_name'];
+
+    // Upload New Photo
+    move_uploaded_file($temp, "uploads/".$photo);
+
+    // Delete Old Photo
+    if($old_photo != "" && file_exists("uploads/".$old_photo)){
+
+        unlink("uploads/".$old_photo);
+
+    }
+
+}
+else{
+
+    // Keep Old Photo
+    $photo = $old_photo;
+
+}
+
+
+// ======================================
+// Update Query
 // ======================================
 
 $sql = "UPDATE studentdb SET
 
 name='$name',
-
 fathers_name='$fathers_name',
-
 mother_name='$mother_name',
-
 dob='$dob',
-
 roll_number='$roll_number',
-
 contact='$contact',
-
 email='$email',
-
 course='$course',
-
 branch='$branch',
-
 semester='$semester',
-
 address='$address',
-
 city='$city',
-
 state='$state',
-
-pincode='$pincode'
+pincode='$pincode',
+photo='$photo'
 
 WHERE id='$id'";
 
 
 // ======================================
-// Query Execute
+// Execute Query
 // ======================================
 
 if(mysqli_query($con,$sql)){
+
     header("Location:view.php");
+
     exit();
+
 }
 else{
 
-    echo "Update Failed";
-    echo "<br>";
+    echo "Update Failed <br>";
+
     echo mysqli_error($con);
 
 }

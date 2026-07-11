@@ -6,38 +6,99 @@
 
 include 'connect.php';
 
+
+// ======================================
+// Get Student ID from URL
+// Example: edit.php?id=5
+// ======================================
+
 $id = $_GET['id'];
 
+
+// ======================================
+// Fetch Student Data
+// ======================================
 
 $sql = "SELECT * FROM studentdb WHERE id='$id'";
 
 $result = mysqli_query($con, $sql);
 
-// only one student row
 $row = mysqli_fetch_assoc($result);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edit Student</title>
-<link rel="stylesheet" href="style_edit.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Student</title>
+
+    <link rel="stylesheet" href="style_edit.css">
+
 </head>
+
 <body>
 
 <div class="container">
 
 <h2>Edit Student Details</h2>
 
-<form action="update.php" method="POST">
+<!-- ======================================
+     Edit Form
+====================================== -->
+
+<form action="update.php"
+      method="POST"
+      enctype="multipart/form-data">
+
+    <!-- Hidden Student ID -->
+
+    <input
+    type="hidden"
+    name="id"
+    value="<?php echo $row['id']; ?>">
 
 
-    <input type="hidden"
-           name="id"
-           value="<?php echo $row['id']; ?>">
+    <!-- Hidden Old Photo -->
+
+    <input
+    type="hidden"
+    name="old_photo"
+    value="<?php echo $row['photo']; ?>">
+
+
+    <!-- Current Student Photo -->
+
+    <label>Current Photo</label>
+
+    <br>
+
+    <img
+    src="uploads/<?php echo $row['photo']; ?>"
+    width="150"
+    height="150"
+    style="border-radius:10px;
+           object-fit:cover;
+           border:2px solid #007bff;">
+
+    <br><br>
+
+
+    <!-- Change Photo -->
+
+    <label>Change Photo</label>
+
+    <input
+    type="file"
+    name="photo"
+    accept="image/*">
+
+    <br><br>
 
 
     <!-- Student Name -->
@@ -96,7 +157,7 @@ $row = mysqli_fetch_assoc($result);
 
     <!-- Contact -->
 
-    <label>Contact</label>
+    <label>Contact Number</label>
 
     <input
     type="text"
@@ -150,7 +211,8 @@ $row = mysqli_fetch_assoc($result);
 
     <label>Address</label>
 
-    <textarea name="address"><?php echo $row['address']; ?></textarea>
+    <textarea
+    name="address"><?php echo $row['address']; ?></textarea>
 
 
     <!-- City -->
