@@ -24,9 +24,11 @@ $result = mysqli_query($con, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Student</title>
+    <link rel="stylesheet" href="style_view.css">
 </head>
 <body>
 
+    <div id="container">
     <!-- Heading -->
     <h1>All Student's List</h1>
 
@@ -34,8 +36,9 @@ $result = mysqli_query($con, $sql);
     <table border = "1"> 
         
         <tr>
-            
+
             <!-- Table heading -->
+            <th>Photo</th>
             <th>ID</th>
             <th>Name</th>
             <th>Father's Name</th>
@@ -52,6 +55,7 @@ $result = mysqli_query($con, $sql);
             <th>City</th>
             <th>state</th>
             <th>PIN Code</th>
+            <th>Action</th>
         </tr>
 
 
@@ -61,6 +65,7 @@ $result = mysqli_query($con, $sql);
         <?php
         
             while($row = mysqli_fetch_assoc($result)) {
+                
         ?>
 
         
@@ -68,29 +73,56 @@ $result = mysqli_query($con, $sql);
             Row Start
         ===================== -->
         <tr>
-            <!-- Student ID  -->
-            <td><?php echo $row['id']?></th>
-            <td><?php echo $row['name']?></th>
-            <td><?php echo $row['fathers_name']?></th>
-            <td><?php echo $row['mother_name']?></th>
-            <td><?php echo $row['gender']?></th>
-            <td><?php echo $row['dob']?></th>
-            <td><?php echo $row['roll_number']?></th>
-            <td><?php echo $row['contact']?></th>
-            <td><?php echo $row['email']?></th>
-            <td><?php echo $row['course']?></th>
-            <td><?php echo $row['branch']?></th>
-            <td><?php echo $row['semester']?></th>
-            <td><?php echo $row['address']?></th>
-            <td><?php echo $row['city']?></th>
-            <td><?php echo $row['state']?></th>
-            <td><?php echo $row['pincode']?></th>
-        </tr>
+        
+            <td>
+                <img src="uploads/<?php echo $row['photo']; ?>"
+                    alt="Student Photo"
+                    width="80"
+                    height="80">
+            </td>
+
+        
+            <td><?php echo $row['id']?></td>
+            <td><?php echo $row['name']?></td>
+            <td><?php echo $row['fathers_name']?></td>
+            <td><?php echo $row['mother_name']?></td>
+            <td><?php echo $row['gender']?></td>
+            <td><?php echo $row['dob']?></td>
+            <td><?php echo $row['roll_number']?></td>
+            <td><?php echo $row['contact']?></td>
+            <td><?php echo $row['email']?></td>
+            <td><?php echo $row['course']?></td>
+            <td><?php echo $row['branch']?></td>
+            <td><?php echo $row['semester']?></td>
+            <td><?php echo $row['address']?></td>
+            <td><?php echo $row['city']?></td>
+            <td><?php echo $row['state']?></td>
+            <td><?php echo $row['pincode']?></td>
+           
+            <!-- ==========================
+            Action Buttons
+            ========================== -->
+            <td class="action">
+                
+            <!-- Edit Button -->
+            <a href="edit.php?id=<?php echo $row['id']; ?>" class="edit-btn">
+            Edit
+            </a>
+
+            <!-- Delete Button -->
+            <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete-btn"
+            onclick="return confirm('Are you sure ?');">
+            Delete
+            </a>
+
+            </td>
+            </tr>
 
         <?php
             }
         ?>
           
     </table>
+    </div>
 </body>
 </html>
