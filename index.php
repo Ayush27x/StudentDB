@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 
 // ======================================
@@ -59,12 +59,33 @@ if (isset($_GET['error'])) {
             <div class="row">
 
 
-                <!-- Student Photo -->
-                <div class="input-box full">
-                    <label>Student Photo</label>
-                    <input type="file" name="photo" required>
-                </div>
+        <!-- ===============================
+          Student Photo
+        =============================== -->
 
+        <div class="input-box full">
+
+        <label>Student Photo</label>
+
+               <!-- File Input -->
+                <input
+                type="file"
+                name="photo"
+                id="photo"
+                accept="image/*"
+                onchange="previewImage(event)"
+                required>
+
+                <br><br>
+
+                <!-- Image Preview -->
+                <img
+                id="preview"
+                src=""
+                alt="Image Preview"
+                style="display:none;">
+
+                </div>
 
                 <!-- Student Name -->
                 <div class="input-box">
@@ -181,5 +202,26 @@ if (isset($_GET['error'])) {
 
         </form>
     </div>
+    
+    <script>
+
+// ===================================
+// Image Preview Function
+// ===================================
+
+function previewImage(event){
+
+    // Preview image ko select karna
+    let image = document.getElementById("preview");
+
+    // Selected file ka temporary URL banana
+    image.src = URL.createObjectURL(event.target.files[0]);
+
+    // Image ko visible karna
+    image.style.display = "block";
+
+}
+
+</script>
 </body>
 </html>

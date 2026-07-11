@@ -29,6 +29,7 @@ $result = mysqli_query($con, $sql);
 <body>
 
     <div id="container">
+
     <!-- Heading -->
     <h1>All Student's List</h1>
 
@@ -63,9 +64,7 @@ $result = mysqli_query($con, $sql);
         Export Data from Database
         ===================== -->
         <?php
-        
-            while($row = mysqli_fetch_assoc($result)) {
-                
+            while($row = mysqli_fetch_assoc($result)) {        
         ?>
 
         

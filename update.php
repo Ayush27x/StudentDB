@@ -8,7 +8,7 @@ include 'connect.php';
 
 
 // ======================================
-// Form se data lena
+// Retrive data from form
 // ======================================
 
 $id = $_POST['id'];
@@ -71,21 +71,13 @@ WHERE id='$id'";
 // ======================================
 
 if(mysqli_query($con,$sql)){
-
-    // Update hone ke baad
-    // View Page open hoga
-
     header("Location:view.php");
-
     exit();
-
 }
 else{
 
     echo "Update Failed";
-
     echo "<br>";
-
     echo mysqli_error($con);
 
 }
